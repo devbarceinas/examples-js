@@ -1,21 +1,27 @@
 (function() {
-    'use strict';
 
-    const newButton = document.querySelector('#generateButtons');
-    const arrNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+  'use strict';
 
-    const showButtons = () => {
-        for (let buttons of arrNumbers) {
-            let node = document.createElement('button');
-            node.setAttribute('iter', buttons);
-            node.addEventListener('click', () => {
-               alert(node.getAttribute('iter')); 
-            });
-            let textNode = document.createTextNode(buttons);
-            node.appendChild(textNode);
-            document.getElementById('iter').appendChild(node);
-        }
+  const newButton = document.querySelector('#generateButtons');
+
+  const showButtons = () => {
+    let element = '';
+    for (let i = 1; i <= 20; i++) {
+      let node = document.createElement('button');
+      node.setAttribute('iter', i);
+      node.className = 'btn';
+      node.addEventListener('click', () => {
+        alert(node.getAttribute('iter'));
+      });
+
+      let textNode = document.createTextNode(i);
+      node.appendChild(textNode);
+      element = document.getElementById('iter').appendChild(node);
     }
 
-    newButton.addEventListener('click', showButtons);
+    return element;
+  }
+
+  showButtons();
+
 })();

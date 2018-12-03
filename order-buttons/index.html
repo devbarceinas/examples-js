@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #iter {
+      display: flex;
+      justify-content: center;
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    .btn {
+      cursor: pointer;
+      margin: 2px;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+  
+    .btn:nth-child(even) {
+      background-color: #112F41;
+      color: #fff;
+      font-weight: bold;
+      border: 2px solid #068587;
+    }
+
+    .btn:nth-child(odd) {
+      background-color: #068587;
+      color: #fff;
+      font-weight: bold;
+      border: 2px solid #112F41;
+    }
+
+  </style>
 </head>
 <body>
-    <div class="container">
-        <button id="generateButtons">Generate Buttons</button>
-        <div id="iter">
+  
+  <div class="container">
+    <h1 class="title">Buttons</h1>
+    <div id="iter"></div>
+  </div>
 
-        </div>
-    </div>
-    <script src="main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
