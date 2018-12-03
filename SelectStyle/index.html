@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Select Style</title>
+
+  <style>
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container--title {
+      display: flex;
+      justify-content: center;
+    }
+
+    .container--table {
+      display: flex;
+      justify-content: center;
+    }
+
+    .container--table_border, th, td {
+      border: 2px solid black;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="container--title">
+      <h4 id="title" class="style--title">Texto a modificar</h4>
+    </div>
+
+    <div class="container--table">
+      <table class="container--table_border">
+        <thead>
+          <tr>
+            <th>Font Size</th>
+            <th>Font Color</th>
+            <th>Text Decoration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <select id="font-size" onchange="fontSize(this)">
+                <option value=""></option>
+              </select>
+            </td>
+            <td>
+              <select id="font-color" onchange="colorChange(this)">
+                <option value=""></option>
+              </select>
+            </td>
+            <td>
+              <select id="text-decoration" onchange="textChange(this)">
+                <option value=""></option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

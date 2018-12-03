@@ -1,0 +1,153 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="jump-frog">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .title {
+        text-align: center;
+        padding-bottom: 10px;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      #list {
+        float: right;
+        padding: 2rem;
+      }
+
+      #list > div {
+        display: inline-block;
+        border: 1px solid black;
+        width: 40px;
+        height: 20px;
+        text-align: center;
+        margin-right: 4px;
+      }
+
+      #list > div span{
+        display: inline-block;
+        padding-top: 40px;
+      }
+
+      .black {
+        background-color: black;
+        color: white;
+      }
+    </style>
+
+    <div class="title">
+      <h1>Jump Frog</h1>
+    </div>
+    <div id="list"></div>
+    <button on-click="_jumps">Jump</button>
+  </template>
+
+  <script>
+    /**
+     * `jump-frog`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class JumpFrog extends Polymer.Element {
+      static get is() { return 'jump-frog'; }
+      static get properties() {
+        return {
+          line: {
+            type: Array,
+            value: [],
+            observer: '_buildLine'
+          },
+          toMove: {
+            type: Number,
+            value: 0
+          },
+          indexFrog: {
+            type: Number,
+            value: 0
+          }
+        };
+      }
+
+      connectedCallback() {
+
+        super.connectedCallback();
+        this.set('line', ['frog', null, null, null, null, null, null, null, null, null]);
+
+      }
+
+      _buildLine(line) {
+
+        if (line !== null || line !== []) {
+
+          let container = this.shadowRoot.querySelector('#list');
+          container.innerHTML = '';
+
+          for (let i = 0; i < this.line.length; i++) {
+
+            let item = document.createElement('div');
+            item.classList.add(this.setColor(this.line[i]));
+
+            let text = document.createElement('spam');
+            text.innerHTML = (this.line[i ]);
+            item.appendChild(text);
+            container.appendChild(item);
+
+          }
+        }
+      }
+
+      setColor(value) {
+        if (value === 'frog') {
+
+          return 'black';
+
+        } else {
+
+          return 'white';
+
+        }
+      }
+
+      _jumps() {
+
+        let jumps = Math.round(Math.random() * (this.line.length));
+        this._jumping(jumps);
+
+      }
+
+      _jumping(jumps) {
+
+        this.toMode = jumps;
+
+        for (let i = 0; i < this.toMode; i++) {
+
+          setTimeout(() => {
+
+            this.line[this.indexFrog] = null;
+            this.indexFrog++;
+
+            if (this.indexFrog === this.line.length) {
+              this.indexFrog = 0;
+            }
+
+            this.line[this.indexFrog] = 'frog';
+            this.line = this.line.filter(item => item !== '');
+
+          }, 300 * i);
+
+        }
+      }
+    }
+
+    customElements.define(JumpFrog.is, JumpFrog);
+  </script>
+</dom-module>
